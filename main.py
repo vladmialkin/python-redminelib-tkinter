@@ -1,9 +1,7 @@
-from redmine import connect
-from redmine import get_projects
-from redmine import get_data_projects
+from redmine import Redmine
 
 if __name__ == '__main__':
-    connect()
-    get_data_projects(get_projects())
-   # print( get_data_projects(get_projects()))
+    a = Redmine()
+    print(a.connect())
+
 
