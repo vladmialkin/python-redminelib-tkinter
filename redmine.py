@@ -16,15 +16,6 @@ class Redmine:
             print(f"Ошибка подключения: {e}")
 
 
-    def get_projects(self)-> list:
+    def get_projects(self):
         """функция полючает список всех проектов"""
-        return list(self.redmine.project.all())
-
-
-    def get_data_projects(self) -> list:
-        """функция получает данные проектов"""
-        return [list(project) for project in self.get_projects()]
-
-    def get_issues(self):
-        """ функция получает список задач """
-        return list()
+        return self.redmine.project.all()
