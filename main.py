@@ -43,16 +43,19 @@ class Interface(tk.Tk):
         self.combobox_projects['values'] = [project for project in self.redmine.get_projects()]
 
     def get_project_combobox(self):
+        """ функция ищет выбранный проект """
         for project in self.redmine.get_projects():
-            if str(project) == self.combobox_projects.get():
-                return project
+            if isinstance(project, object):
+                if str(project) == self.combobox_projects.get():
+                    return project
 
     def get_tree_issue(self):
-        """ функция заполняет список задач """
+        """ функция заполняет список задач в таблицу"""
         self.clear_tree()
         for issue in self.get_project_combobox().issues:
-            self.tree.insert("", tk.END, values= [issue.id, issue.project, issue.tracker])
-
+            if isinstance(issue, object):
+                self.tree.insert("", tk.END, values=[issue.id, issue.project, issue.tracker, issue.status, issue.priority,
+                                                  issue, issue.attachments, issue.updated_on])
     def clear_tree(self):
         """ удаляет все данные из таблицы при изменении работника """
         for record in self.tree.get_children():
@@ -63,7 +66,7 @@ class Interface(tk.Tk):
         count = 1
         for column in colums_list:
             self.tree.heading(f"#{count}", text=column, anchor=tk.CENTER)
-            self.tree.column(f"#{count}", stretch=tk.YES, width=120)
+            self.tree.column(f"#{count}", stretch=tk.YES, width=130)
             count += 1
 
 if __name__ == '__main__':
