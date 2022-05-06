@@ -19,3 +19,7 @@ class Redmine:
     def get_projects(self):
         """функция полючает список всех проектов"""
         return self.redmine.project.all()
+
+    def get_author(self):
+        """функция получает список всех авторов"""
+        pass
