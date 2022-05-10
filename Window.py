@@ -22,7 +22,6 @@ class Interface(tk.Tk):
 
     def __init__(self):
         super().__init__()
-
         self.redmine = Redmine()
 
         self.label_projects = tk.Label(self, width=20, text="Проект")
