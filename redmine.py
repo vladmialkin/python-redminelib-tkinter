@@ -7,19 +7,15 @@ class Redmine:
     def __init__(self):
         self.redmine = rdm.Redmine(redmine_site, key=redmine_key)
         self.connect()
-
     def connect(self):
         """функция подключается к redmine"""
         try:
             self.redmine
         except BaseException as e:
             print(f"Ошибка подключения: {e}")
-
-
     def get_projects(self):
         """функция полючает список всех проектов"""
         return self.redmine.project.all()
-
     def get_author(self):
         """функция получает список всех авторов"""
         pass
